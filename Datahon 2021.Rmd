@@ -1,0 +1,33 @@
+---
+title: "Datathon 2021"
+author: "Max Alvarez"
+date: "2/22/2021"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+demographic = read.csv("DemographicData.csv")
+sheet.pull = read.csv("SheetPullData.csv")
+head(sheet.pull,5)
+hh.a = sheet.pull %>%
+  filter(HH_ID == "A")
+  
+mean(hh.a$Time_since_last_pull)
+
+hh.b = sheet.pull %>%
+  filter(HH_ID == "B")
+  
+mean(hh.b$Time_since_last_pull)
+
+hh.c = sheet.pull %>%
+  filter(HH_ID == "C")
+  
+mean(hh.c$Time_since_last_pull)
+
+
+
+
+
+```
+
