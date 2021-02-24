@@ -1,6 +1,6 @@
 ---
 title: "Datathon 2021"
-author: "Max Alvarez"
+author: "Group 71"
 date: "2/22/2021"
 output: html_document
 ---
