@@ -1,6 +1,6 @@
 ---
 title: "Datathon 2021"
-author: "Group 71"
+author: "Max Alvarez"
 date: "2/22/2021"
 output: html_document
 ---
@@ -8,28 +8,44 @@ output: html_document
 ```{r}
 library(tidyverse)
 demographic = read.csv("DemographicData.csv")
-sheet.pull = read.csv("SheetPullData.csv")
-head(sheet.pull,5)
+sheet.pull = read.csv("SheetPullData.csv", )
 sheet.pull$Time.hours = as.numeric(format(as.POSIXct(sheet.pull$Timestamp,format="%Y-%m-%d %H:%M:%S"),format = "%H"))
+sheet.pulls = sheet.pull%>%
+  mutate(Roll_ID = as.factor(Roll_ID))
 
-hh.a = sheet.pull %>%
+```
+
+```{r}
+head(sheet.pull,5)
+hh.a = sheet.pulls %>%
   filter(HH_ID == "A")
   
 mean(hh.a$Time_since_last_pull)
 
-hh.b = sheet.pull %>%
+hh.b = sheet.pulls %>%
   filter(HH_ID == "B")
   
 mean(hh.b$Time_since_last_pull)
 
-hh.c = sheet.pull %>%
+hh.c = sheet.pulls %>%
   filter(HH_ID == "C")
   
 mean(hh.c$Time_since_last_pull)
 
+hh.d = sheet.pulls %>%
+  filter(HH_ID == "D")
+  
+mean(hh.d$Time_since_last_pull)
 
 
+```
 
+```{r}
+summary(sheet.pulls)
+sapply(sheet.pulls,class)
+```
 
+```{r}
+validation_index = createDataPartition(dataset$Species, p =0.80, list= FALSE)
 ```
 
