@@ -10,6 +10,8 @@ library(tidyverse)
 demographic = read.csv("DemographicData.csv")
 sheet.pull = read.csv("SheetPullData.csv")
 head(sheet.pull,5)
+sheet.pull$Time.hours = as.numeric(format(as.POSIXct(sheet.pull$Timestamp,format="%Y-%m-%d %H:%M:%S"),format = "%H"))
+
 hh.a = sheet.pull %>%
   filter(HH_ID == "A")
   
